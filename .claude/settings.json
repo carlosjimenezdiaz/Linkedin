@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch(*)",
+      "WebFetch(*)",
+      "Read(CLAUDE.md)",
+      "Read(profile/**)",
+      "Read(templates/**)",
+      "Read(content/**)",
+      "Write(content/ideas.md)",
+      "Write(content/drafts/**)",
+      "Write(content/published/**)",
+      "Write(profile/style.md)"
+    ],
+    "deny": []
+  }
+}
