@@ -88,6 +88,51 @@ Deep research on a topic to fuel content creation.
    - **Post ideas**: 2–3 specific post concepts this research enables
 3. Save the brief to `content/drafts/research-[topic-slug]-[date].md`
 
+**For deeper research with LinkedIn influencer data**, use the Python engine instead:
+```
+python -m engine.orchestrator --research-only --topic "[topic]"
+```
+This scrapes actual LinkedIn posts from your tracked influencers (`profile/influencers.json`) and supplements with Perplexity web research. Output saved to `content/drafts/{slug}/brief.md`.
+
+---
+
+### `visual [draft-folder] [type?]`
+
+Recommend and generate images for an existing draft using the Python engine.
+
+**Image types:** `branded`, `infographic`, `carousel`
+- `branded` — single 16:9 hero image (fal.ai/Flux), no text, abstract data viz aesthetic
+- `infographic` — text-in-image 1:1 square (Ideogram), renders post hook + key points as readable text
+- `carousel` — multi-slide 1080×1080 PNGs (Playwright), one slide per numbered insight
+
+**Process:**
+1. Read `content/drafts/[draft-folder]/post.md`
+2. Recommend the best image type:
+   - Has 3+ numbered items → `carousel` or `infographic`
+   - Stats-heavy → `infographic`
+   - Single insight, story, or CTA → `branded`
+3. Output the terminal command to run:
+```
+python -m engine.orchestrator --draft content/drafts/[slug]/brief.md --image [type]
+```
+4. After Carlos runs it, images appear in `content/drafts/[slug]/images/`
+
+---
+
+### `full [topic] [type?]`
+
+Run the complete automated pipeline: research → write → image. One command, full output.
+
+**Process:**
+1. Confirm topic and infer best post type if not provided
+2. Suggest appropriate image type based on post type
+3. Output the terminal command to run:
+```
+python -m engine.orchestrator --topic "[topic]" --type [post-type] --image auto
+```
+4. Explain what will be created: `brief.md`, `post.md`, and image files in `content/drafts/{slug}/`
+5. After the command runs, use `/linkedin publish content/drafts/{slug}/post.md` to finalize
+
 ---
 
 ### `draft [number-or-topic]`
@@ -160,6 +205,18 @@ Before outputting any post, verify:
 - [ ] No sentence starts with "I am excited/proud/humbled"
 - [ ] No unsubstantiated stats without a source note
 - [ ] CTA is specific and low-friction ("DM me", "Let's connect", "Drop a comment")
-- [ ] Word count: 150–300
-- [ ] No more than 3–5 hashtags, placed at the end
+- [ ] Word count: 150-300
+- [ ] No more than 3-5 hashtags, placed at the end
 - [ ] Tone matches `profile/style.md`
+
+## Anti-AI Detection Checklist (CRITICAL)
+
+LinkedIn actively flags AI-written content. Before outputting any post, verify:
+- [ ] Zero em dashes in the entire post (use periods or commas instead)
+- [ ] No numbered lists or bold section headers
+- [ ] No parallel paragraph structure (each paragraph flows differently)
+- [ ] No AI-tell words: "leverage", "streamline", "optimize", "actionable", "unlock", "infrastructure"
+- [ ] Uses contractions and casual phrasing throughout
+- [ ] Some sentences start with "Look," "So," "But," "And"
+- [ ] No clean intro-body-conclusion format. Just starts talking, ends with an opinion.
+- [ ] Feels human-messy: uneven paragraphs, varied rhythm, occasional fragments

@@ -10,7 +10,10 @@
       "Write(content/ideas.md)",
       "Write(content/drafts/**)",
       "Write(content/published/**)",
-      "Write(profile/style.md)"
+      "Write(profile/style.md)",
+      "Write(profile/influencers.json)",
+      "Read(engine/**)",
+      "Write(engine/**)"
     ],
     "deny": []
   }

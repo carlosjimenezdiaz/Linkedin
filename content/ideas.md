@@ -35,4 +35,16 @@ To turn an idea into a post: `/linkedin draft [#number or topic keywords]`
 - [#014] "The skills gap between ML engineers and quant analysts (and why it's a career opportunity)" (type: thought-leadership)
 
 ---
+
+## 2026-03-20 Theme: Cross-cutting / AI × Finance
+
+- [#015] "83% of quants use AI daily — but most can't explain what their model is actually doing in production" (type: thought-leadership)
+- [#016] "The real skills gap isn't ML vs. quant — it's production ML vs. notebook ML" (type: thought-leadership)
+- [#017] "What I actually ask when evaluating an AI vendor for a financial firm (it's not what they pitch)" (type: story)
+- [#018] "Shadow AI is already inside your firm. The question is whether your CTOs know it." (type: news-commentary)
+- [#019] "The ROI question every AI vendor dreads: what P&L line does this actually move?" (type: thought-leadership)
+- [#020] "Why governance is now the bottleneck for agentic AI in finance — not the models" (type: thought-leadership)
+- [#021] "From signal to production: the career path nobody in quant finance is talking about" (type: story)
+
+---
 <!-- New idea sessions will be appended below this line by /linkedin ideas -->

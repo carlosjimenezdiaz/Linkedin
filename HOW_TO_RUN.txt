@@ -1,0 +1,83 @@
+LINKEDIN CONTENT ENGINE — QUICK REFERENCE
+==========================================
+
+OPTION A: WEB APP (recommended)
+---------------------------------
+1. Setup (first time only):
+   conda activate linkedin
+   pip install -r requirements.txt
+   cd web && npm install && cd ..
+
+2. Add to .env:
+   SUPABASE_URL=https://your-project.supabase.co
+   SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+
+3. Create web/.env.local:
+   NEXT_PUBLIC_API_URL=http://localhost:8000
+   NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+
+4. Run Supabase migration:
+   Copy supabase/migrations/001_initial_schema.sql into your
+   Supabase SQL Editor and run it. Create a "post-images" storage bucket.
+
+5. Start both servers (two terminals):
+   Terminal 1: uvicorn api.main:app --reload --port 8000
+   Terminal 2: cd web && npm run dev
+
+6. Open http://localhost:3000
+
+7. First time: go to Ideas page → click "Import from ideas.md"
+
+8. Create a post:
+   - Go to Create page
+   - Enter topic, pick type and image
+   - Click "Generate Post"
+   - Watch live progress
+   - Edit/copy the result from the Posts page
+
+
+OPTION B: CLI PIPELINE (still works)
+--------------------------------------
+1. conda activate linkedin
+2. Pick a command:
+
+   Next idea from backlog:
+   python -m engine.orchestrator --next-idea --image auto
+
+   Specific topic:
+   python -m engine.orchestrator --topic "your topic here" --type thought-leadership --image auto
+
+   Image types: diagram | branded | infographic | carousel | auto | none
+
+3. Find output in: content/drafts/{slug}/post.md
+
+
+OPTION C: CLAUDE SLASH COMMANDS (no API costs)
+-----------------------------------------------
+   /linkedin draft #001          ← draft a specific idea by number
+   /linkedin create thought-leadership "your topic"
+   /linkedin publish content/drafts/{folder}/post.md
+   /linkedin ideas "theme"       ← generate new ideas
+   /linkedin calendar 2          ← 2-week posting calendar
+
+
+IDEA BACKLOG
+------------
+File: content/ideas.md (or Ideas page in web app)
+Ideas are numbered #001–#021 (and growing).
+
+
+AFTER GENERATING A POST
+-----------------------
+Web: Edit in Posts page → Mark Ready → Copy → Paste to LinkedIn
+CLI: /linkedin publish content/drafts/{folder}/post.md → copy block → paste
+
+
+REQUIRED ENV VARS (in .env)
+-----------------------------
+APIFY_TOKEN              ← LinkedIn scraping
+OPENROUTER_API_KEY       ← AI models (Sonnet, Haiku, Perplexity)
+FAL_KEY                  ← image generation (nano-banana-2)
+SUPABASE_URL             ← Supabase project URL
+SUPABASE_SERVICE_ROLE_KEY ← Supabase service role key

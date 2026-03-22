@@ -1,0 +1,35 @@
+{
+  "_comment": "Add LinkedIn profile URLs to track. The engine scrapes their recent posts to inform content strategy.",
+  "_example": "https://www.linkedin.com/in/handle/",
+  "influencers": [
+    {
+      "name": "Nate Herkelman",
+      "url": "https://www.linkedin.com/in/nateherkelman/",
+      "pillar": "agentic-ai"
+    },
+    {
+      "name": "Cassie Kozyrkov",
+      "url": "https://www.linkedin.com/in/kozyrkov/",
+      "pillar": "agentic-ai",
+      "note": "Decision Intelligence + AI risk — bridges your MRO and AI consulting worlds perfectly"
+    },
+    {
+      "name": "Nicolas Boucher",
+      "url": "https://www.linkedin.com/in/nicolasboucher/",
+      "pillar": "ai-in-finance",
+      "note": "1M+ finance followers; AI in Finance content aligns with Balance Ocean and Artomation audiences"
+    },
+    {
+      "name": "Ethan Mollick",
+      "url": "https://www.linkedin.com/in/emollick/",
+      "pillar": "agentic-ai",
+      "note": "Most credible practical GenAI voice for business — fuels content ideas for your Artomation positioning"
+    },
+    {
+      "name": "Menno Fokkema",
+      "url": "https://www.linkedin.com/in/mennofokkema/",
+      "pillar": "ai-governance-risk",
+      "note": "AI governance and compliance frameworks — directly relevant to your SR 11-7 / MRO validation work"
+    }
+  ]
+}
